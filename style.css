@@ -11,3 +11,14 @@
     background-position: center calc(50% + 15px);
     background-repeat: no-repeat;
 }
+
+.money-button {
+    max-width: 200px;
+    display: inline;
+    margin: 25px 10px 0;
+}
+
+#wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+}

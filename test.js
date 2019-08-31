@@ -7,9 +7,9 @@ function myTimer() {
     .then(function(response) {
         console.log(response);
         if (response.ok) {
-            body.querySelector('.led').style.backgroundColor = "green";
+            document.querySelector('.led').style.backgroundColor = "green";
         }else{
-            body.querySelector('.led').style.backgroundColor = "red";
+            document.querySelector('.led').style.backgroundColor = "red";
         }
     });
 }
