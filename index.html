@@ -1,21 +1,9 @@
 <html charset="utf-8">
 <head>
-    <style>
-        .led{
-            height: 300px;
-            width: 300px;
-            border-radius: 50%;
-            margin: 0 auto;
-            margin-top: 100px;
-            border: 3px solid black;
-            background-image: url("https://coinmarketdaddy.com/upload/coin/itcoinashbchsv.png");
-            background-size: 75% 75%;
-            background-position: center calc(50% + 15px);
-            background-repeat: no-repeat;
-        }
-        .on{background-color: green;}
-        .off{background-color: red;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.moneybutton.com/moneybutton.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="test.js"></script>
 </head>
 <body>
     <div class="money-button"
@@ -39,30 +27,5 @@
     <div class="led"></div>
 
     <!--data-to="1BefTfvsk3BSqYzcsmgPZ4sUYpsMfWKSkw"-->
-    <script src="https://www.moneybutton.com/moneybutton.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script type="text/javascript">
-
-        var segundos = 1;
-
-        var myVar = setInterval(myTimer, segundos*1000);
-
-        function myTimer() {
-            // $('.led').removeClass('on off');
-            fetch("https://reqres.in/api/users?page=2")
-            .then(function(response) {
-                console.log(response);
-                if (response.ok) {
-                    $('.led').addClass('on');
-                }else{
-                    $('.led').addClass('off');
-                }
-            });
-        }
-
-        // function myStopFunction() {
-        //     clearInterval(myVar);
-        // } 
-    </script>
 </body>
 </html>
