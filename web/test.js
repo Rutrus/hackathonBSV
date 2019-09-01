@@ -1,23 +1,51 @@
-// setInterval(cambiaColor, 1000);
+var timer;
+var segundos = 0;
+function main(){}
 
-function cambiaColor(response) {
-    if (response === undefined){
-        response = {}
-        response.ok = Math.round(Math.random())
-    }
+function llamada(e){
+    var input = document.getElementById('segundos');
+    var loader = document.querySelector('.loader');
+    input.disabled = true;
+    e.style.display = "none";
+    loader.style.display = "block";
 
-    console.log(response);
-    if (response.ok) {
-        document.querySelector('.led').style.backgroundColor = "green";
-    }else{
-        document.querySelector('.led').style.backgroundColor = "red";
-    }   
+    var factor = 110;
+    var amount = factor * input.value * 1e-8;
+
+    console.log({'factor':factor, 'amount':amount, 'input':input.value});
+
+    const div = document.getElementById('money-button');
+    var config = {
+        to: "rutrus@moneybutton.com",
+        /*amount: "0.00000546",
+        currency: "BSV",*/
+        amount: amount.toString(),
+        currency: "BSV",
+        label: "Programar",
+        clientIdentifier: "253e9c2eed154e4e9defa7bc50cdcbf6",
+        buttonId: "boton-pagina",
+        buttonData: "{}",
+        type: "tip",
+        onPayment: function (arg) {
+            setTimeout(function(){
+                console.log('onPayment', arg);
+                document.querySelector('.led').style.backgroundColor = "green";
+                segundos = input.value;
+                timer = setInterval(contador, 1000);
+            }, 2000);
+        },
+        onError: function (arg) { console.log('onError', arg) },
+        onLoad: function (arg) {}
+    };
+    moneyButton.render(div, config);
 }
 
-/*
-const mbClient = new MoneyButtonClient("253e9c2eed154e4e9defa7bc50cdcbf6", "a97ce4413fc641f64c3a6470e5037ffb")
-await mbClient.logInAsApp()
-const payments = await mbClient.getOwnPayments()
-const data = payments.map (p => ({id: p.id, amount: p.amount, currency: p.currency}))
-console.log(data)
-*/
+function contador() {
+    document.getElementById('contador').innerHTML = "Faltan " + segundos + ' segundos';
+    segundos -= 1;
+    if (segundos == -1) {
+        document.querySelector('.led').style.backgroundColor = "red";
+        document.getElementById('contador').innerHTML = '';
+        clearInterval(timer);
+    }
+}

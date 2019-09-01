@@ -5,22 +5,38 @@
     border-radius: 50%;
     margin: 0 auto;
     margin-top: 100px;
-￼    margin-left: 45px;
     border: 3px solid black;
     background-image: url("https://coinmarketdaddy.com/upload/coin/itcoinashbchsv.png");
     background-size: 75% 75%;
     background-position: center calc(50% + 15px);
     background-repeat: no-repeat;
-}
-
-.money-button {
-    max-width: 200px;
-    display: inline;
-    margin: 25px 10px 0;
+    background-color: red;
 }
 
 #wrapper {
-    max-width: 450px;
+    max-width: 800px;
+}
+
+#money-button {
+    max-width: 200px;
+    overflow-x: hidden;
+    display: block!important;
     margin: 0 auto;
-    padding-left: 45px;
+    margin-top: -50px;
+}
+
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin: 10px auto;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

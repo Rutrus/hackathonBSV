@@ -2,10 +2,28 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body onload="setInterval(cambiaColor, 1000)">
-    <div style="clear: both;" class="led"></div>
+<body onload="main()">
     <div id="wrapper">
-            <div style="float: left;" style="margin-left: 10px;" class="money-button"
+        <div class="led"></div>
+        <div style="text-align: center;">
+            <br>
+            <span id="contador"></span>
+            <br><br>
+            <span>Temporizar</span>
+            <input id="segundos" type="number" style="max-width: 70px;" value="5" step="5">
+            <span>Segundos</span>
+            <br><br>
+            <button type="button" onclick="llamada(this)" style="width: 200px;">Ok</button>
+        </div>
+        <div style="position: relative;">
+            <div class="loader"></div> 
+            <div id="money-button"></div>
+        </div>
+    </div>
+    
+
+    <!-- <div id="wrapper"> -->
+            <!-- <div style="float: left;" style="margin-left: 10px;" class="money-button"
             data-to="10065"
             data-client-identifier='253e9c2eed154e4e9defa7bc50cdcbf6'
             data-amount="0.00000546"
@@ -22,9 +40,10 @@
             data-success-message="Enviado!"
             data-op-return="#OFF#1"
             data-label="Apaga"
-            ></div>
-    </div>
-    <script src="https://www.moneybutton.com/moneybutton.js"></script>
-    <script src="test.js"></script>
-</body>
-</html>
+            ></div> -->
+            <!-- </div> -->
+
+            <script src="https://www.moneybutton.com/moneybutton.js"></script>
+            <script src="test.js"></script>
+        </body>
+        </html>
