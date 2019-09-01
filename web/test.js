@@ -47,5 +47,6 @@ function contador() {
         document.querySelector('.led').style.backgroundColor = "red";
         document.getElementById('contador').innerHTML = '';
         clearInterval(timer);
+        location.reload();
     }
 }
