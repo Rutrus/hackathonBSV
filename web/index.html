@@ -1,17 +1,13 @@
 <html charset="utf-8">
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://www.moneybutton.com/moneybutton.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="test.js"></script>
 </head>
-<body>
-    
+<body onload="setInterval(cambiaColor, 1000)">
+    <div style="clear: both;" class="led"></div>
     <div id="wrapper">
-            <div style="clear: both;" class="led"></div>
             <div style="float: left;" style="margin-left: 10px;" class="money-button"
             data-to="10065"
-            data-client-identifier="28d219bcde2c52a65c52814e44a96124"
+            data-client-identifier='253e9c2eed154e4e9defa7bc50cdcbf6'
             data-amount="0.00000546"
             data-currency="BSV"
             data-success-message="Enviado!"
@@ -20,14 +16,15 @@
             ></div>
             <div style="float: right;" class="money-button"
             data-to="10065"
-            data-client-identifier="28d219bcde2c52a65c52814e44a96124"
+            data-client-identifier="253e9c2eed154e4e9defa7bc50cdcbf6"
             data-amount="0.00000546"
             data-currency="BSV"
             data-success-message="Enviado!"
             data-op-return="#OFF#1"
             data-label="Apaga"
             ></div>
-            <div style="clear: both;"></div>
     </div>
+    <script src="https://www.moneybutton.com/moneybutton.js"></script>
+    <script src="test.js"></script>
 </body>
 </html>
