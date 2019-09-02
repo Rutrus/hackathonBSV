@@ -16,13 +16,14 @@ function llamada(e){
 
     const div = document.getElementById('money-button');
     var config = {
-        to: "rutrus@moneybutton.com",
-        /*amount: "0.00000546",
+        /*to: "rutrus@moneybutton.com",
+        amount: "0.00000546",
         currency: "BSV",*/
+        to: "1BefTfvsk3BSqYzcsmgPZ4sUYpsMfWKSkw",
         amount: amount.toString(),
         currency: "BSV",
         label: "Programar",
-        clientIdentifier: "253e9c2eed154e4e9defa7bc50cdcbf6",
+        clientIdentifier: "28d219bcde2c52a65c52814e44a96124",
         buttonId: "boton-pagina",
         buttonData: "{}",
         type: "tip",
