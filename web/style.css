@@ -14,7 +14,8 @@
 }
 
 #wrapper {
-    max-width: 800px;
+    max-width: 360px;
+    margin: auto;
 }
 
 #money-button {
