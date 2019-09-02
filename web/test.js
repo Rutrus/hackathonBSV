@@ -1,16 +1,25 @@
 var timer;
 var segundos = 0;
+var amount;
 function main(){}
 
+var factor = 110;
+var input = document.getElementById('segundos');
+input.addEventListener("change", updateSecs)
+
+function updateSecs(){
+    sats = document.getElementById("sats")
+    amount = factor * input.value * 1e-8;
+    sats.innerHTML = Math.round(amount * 1e8) + " sats"
+}
+
 function llamada(e){
-    var input = document.getElementById('segundos');
+    // var input = document.getElementById('segundos');
     var loader = document.querySelector('.loader');
     input.disabled = true;
     e.style.display = "none";
     loader.style.display = "block";
 
-    var factor = 110;
-    var amount = factor * input.value * 1e-8;
 
     console.log({'factor':factor, 'amount':amount, 'input':input.value});
 
