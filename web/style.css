@@ -42,6 +42,7 @@
 
 #timer {
   display: none;
+  text-align: center;
 }
 
 #on{
@@ -51,6 +52,10 @@
 
 #off {
   float: right;
+}
+
+#segundos {
+  max-width: 70px;
 }
 
 /* LOADER */

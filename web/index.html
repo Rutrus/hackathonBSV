@@ -6,15 +6,15 @@
     <div id="wrapper">
         <a id="toogle" onClick="toogle()" href="#">Timer</a>
         <div class="led"></div>
-        <div id="timer" style="text-align: center;">
+        <div id="timer">
             <br>
             <span id="contador"></span>
             <br><br>
             <span>Timer: </span>
-            <input id="segundos" type="number" style="max-width: 70px;" value="5" step="5" min="5" on>
+            <input id="segundos" type="number" value="5" step="5" min="5" on>
             <span> seconds</span>
             <br><br>
-            <button class="button" onclick="llamada(this)" style="width: 200px;">Cost: <span id="sats">600 sats</span></button>
+            <button class="button" onclick="llamada(this)">Cost: <span id="sats">600 sats</span></button>
             <div style="position: relative;">
                 <div class="loader"></div>
                 <div id="money-button"></div>
@@ -24,7 +24,6 @@
             <div id="on" class="moneyButton"></div>
             <div id="off" class="moneyButton"></div>
         </div>
-
     </div>
 
     <script src="https://www.moneybutton.com/moneybutton.js"></script>
