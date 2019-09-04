@@ -13,9 +13,10 @@
     background-color: red;
 }
 
-#wrapper {
-    max-width: 360px;
+#wrapper{
+    max-width: 480px;
     margin: auto;
+    position: relative;
 }
 
 #money-button {
@@ -24,6 +25,32 @@
     display: block!important;
     margin: 0 auto;
     margin-top: -50px;
+}
+
+.moneyButton {
+  max-width: 200px;
+  display: inline;
+  margin: 25px 10px 0;
+}
+
+#toogle {
+  text-align: right;
+  position: absolute;
+  top: 8px;
+  right: -60px;
+}
+
+#timer {
+  display: none;
+}
+
+#on{
+  margin-left: 50px;
+  float: left;
+}
+
+#off {
+  float: right;
 }
 
 /* LOADER */

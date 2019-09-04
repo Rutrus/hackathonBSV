@@ -2,48 +2,32 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body onload="main()">
+<body>
     <div id="wrapper">
+        <a id="toogle" onClick="toogle()" href="#">Timer</a>
         <div class="led"></div>
-        <div style="text-align: center;">
+        <div id="timer" style="text-align: center;">
             <br>
             <span id="contador"></span>
             <br><br>
-            <span>Temporizar </span>
+            <span>Timer: </span>
             <input id="segundos" type="number" style="max-width: 70px;" value="5" step="5" min="5" on>
-            <span> segundos</span>
+            <span> seconds</span>
             <br><br>
             <button class="button" onclick="llamada(this)" style="width: 200px;">Cost: <span id="sats">600 sats</span></button>
+            <div style="position: relative;">
+                <div class="loader"></div>
+                <div id="money-button"></div>
+            </div>
         </div>
-        <div style="position: relative;">
-            <div class="loader"></div> 
-            <div id="money-button"></div>
+        <div id="switch">
+            <div id="on" class="moneyButton"></div>
+            <div id="off" class="moneyButton"></div>
         </div>
+
     </div>
-    
 
-    <!-- <div id="wrapper"> -->
-            <!-- <div style="float: left;" style="margin-left: 10px;" class="money-button"
-            data-to="10065"
-            data-client-identifier='253e9c2eed154e4e9defa7bc50cdcbf6'
-            data-amount="0.00000546"
-            data-currency="BSV"
-            data-success-message="Enviado!"
-            data-op-return="#ON#1"
-            data-label="Enciende"
-            ></div>
-            <div style="float: right;" class="money-button"
-            data-to="10065"
-            data-client-identifier="253e9c2eed154e4e9defa7bc50cdcbf6"
-            data-amount="0.00000546"
-            data-currency="BSV"
-            data-success-message="Enviado!"
-            data-op-return="#OFF#1"
-            data-label="Apaga"
-            ></div> -->
-            <!-- </div> -->
-
-            <script src="https://www.moneybutton.com/moneybutton.js"></script>
-            <script src="test.js"></script>
-        </body>
-        </html>
+    <script src="https://www.moneybutton.com/moneybutton.js"></script>
+    <script src="test.js"></script>
+</body>
+</html>
