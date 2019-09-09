@@ -12,6 +12,9 @@ El script `reader.py` pide a money button las últimas transacciones y lee la or
 
 El módulo de python `RPi.GPIO` es propio de Raspberry Pi para controlar y manipular los pines de conexión que activarán/desactivarán el relé. Pon la opción `IS_RASPI = True`
 
+###Configuración mínima
+En la configuración necesitas completar como mínimo en `config.json`:
+
 **Client Identifier**
 Usa el ''Client Identifier'' dentro de tus botones web para mantener un registro de quién paga, cuándo y desde dónde.
 
@@ -28,6 +31,9 @@ The first time it runs it will create a "config.json" file that will have to be 
 The `reader.py` script asks money button for the latest transactions and reads the on/off command found in the most recent transaction.
 
 The `RPi.GPIO` python module is owned by Raspberry Pi to control and manipulate the connection pins that will activate / deactivate the relay. Activate the option with `IS_RASPI` = `True` inside the script.
+
+###Minimal configuration
+Yo will need to complete at least this two values in `config.json`:
 
 **Client Identifier**
 Use the Client Identifier inside your buttons to keep track of who paid for what.
