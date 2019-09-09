@@ -12,7 +12,7 @@ El script `reader.py` pide a money button las últimas transacciones y lee la or
 
 El módulo de python `RPi.GPIO` es propio de Raspberry Pi para controlar y manipular los pines de conexión que activarán/desactivarán el relé. Pon la opción `IS_RASPI = True`
 
-###Configuración mínima
+### Configuración mínima
 En la configuración necesitas completar como mínimo en `config.json`:
 
 **Client Identifier**
@@ -32,7 +32,7 @@ The `reader.py` script asks money button for the latest transactions and reads t
 
 The `RPi.GPIO` python module is owned by Raspberry Pi to control and manipulate the connection pins that will activate / deactivate the relay. Activate the option with `IS_RASPI` = `True` inside the script.
 
-###Minimal configuration
+### Minimal configuration
 Yo will need to complete at least this two values in `config.json`:
 
 **Client Identifier**
