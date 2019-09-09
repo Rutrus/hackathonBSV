@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 import pandas as pd
 import json
@@ -26,8 +26,10 @@ if IS_RASPI:
 def encode_client(client_id = "", client_secret = "", **kwargs):
     """Sets an ID:SECRET encoded in base64
     """
-    return str(base64.b64encode(bytes(client_id + ':' + client_secret, 'utf-8')),'utf-8')
-
+    try: # Python3
+        return str(base64.b64encode(bytes(client_id + ':' + client_secret, 'utf-8')),'utf-8')
+    except: # Python2
+        return base64.b64encode(client_id + ':' + client_secret)
 
 def getToken(client_id = None, client_secret = None, **kwargs):
     """Getter OAuth token.
@@ -35,7 +37,7 @@ def getToken(client_id = None, client_secret = None, **kwargs):
     It saves the result JSON in 'token.txt'
     """
     assert client_id and client_secret, "client_id o client_secret están vacíos"
-    os.system(f"curl --request POST --url 'https://www.moneybutton.com/oauth/v1/token' --header 'content-type: application/x-www-form-urlencoded' --header 'Authorization: Basic {encode_client(client_id, client_secret)}' --data grant_type=client_credentials   --data scope=application_access:write > token.txt ")
+    os.system("curl --request POST --url 'https://www.moneybutton.com/oauth/v1/token' --header 'content-type: application/x-www-form-urlencoded' --header 'Authorization: Basic {}' --data grant_type=client_credentials   --data scope=application_access:write > token.txt ".format(encode_client(client_id, client_secret)))
     token = json.loads(open("token.txt").read())
     return token
 
@@ -48,14 +50,15 @@ def saveConfig(client_id = "", client_secret = "", access_token = "", expires_in
     Left the other fields in blank
     """
     config = {"client_id" : client_id, "client_secret" : client_secret, "expire":(time.time() + expires_in ) if expires_in else 0, "access_token": access_token, "offset": offset}
-    json.dump({**config,**kwargs},fp=open(CONFIG_FILE,"w+"))
+    config.update(kwargs)
+    json.dump(config, fp=open(CONFIG_FILE,"w+"))
     if not client_id or not client_secret:
-        msg = f"""Created {CONFIG_FILE} you need to complete it with client_id and client_secret.
+        msg = """Created {} you need to complete it with client_id and client_secret.
 
 If you still don't have an app, go to:
 https://www.moneybutton.com/settings/apps/create
 and create one.
-"""
+""".format(CONFIG_FILE)
         print(msg)
         exit()
 
@@ -77,7 +80,7 @@ def readConfig():
             newToken = getToken(**config)
             config["access_token"] = newToken["access_token"]
             config["expire"] = time.time()+newToken["expires_in"]
-            config = {**config, **newToken}
+            config.update(newToken)
             saveConfig(**config)
     
     return config
@@ -89,12 +92,13 @@ def updateLimits(config):
     Necessary because limit is 100 and it shows the transactions since the beginning
     """
     NUM = 4
-    config = {**config,**{"limit":100}}
+    config.update({"limit":100})
     data = getTransactions(**config)
+    if not data: return
     increment = len(data["data"])
     config["offset"] += (increment-NUM) if increment >= NUM else 0
     config["limit"] = 40
-    print("Offset set to: ",config["offset"]) if increment > NUM else None
+    print("Offset set to: ",config["offset"]) if increment > NUM else "..."
     saveConfig(**config)
 
 
@@ -103,7 +107,7 @@ def decodeBytestring(bytestring):
 
     The text in OP_RETURN is encoded as bytestring, so this function decodes it.
     """
-    return bytes.fromhex(bytestring).decode("utf8")
+    return bytearray.fromhex(bytestring).decode("utf8")
 
 
 def getTransactions(access_token = "", limit = 10, offset = 0, **kwargs):
@@ -151,11 +155,12 @@ def execute(turn, element_id, timer=None):
 
 previous = ""
 while True:
+    #import ipdb; ipdb.set_trace()
     config = readConfig()
     updateLimits(config)
     timeSleep = 1
     time.sleep(timeSleep)
-
+    
     transactions = getTransactions(**config)
     if not transactions:
         continue
@@ -170,5 +175,5 @@ while True:
     _, turn, element_id = last["text"].split("#", 3)
     execute(turn,element_id)
     previous = last["created-at"]
-    print(f"\nReading every {timeSleep} second(s)...")
+    print("\nReading every {} second(s)...".format(timeSleep))
 
